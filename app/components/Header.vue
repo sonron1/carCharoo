@@ -15,8 +15,16 @@
             <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
               <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
             </svg>
-            +229 XX XX XX XX
+            +229 67 97 42 98
           </span>
+          <a
+              href="https://wa.me/22967974298"
+              target="_blank"
+              class="flex items-center hover:text-yellow-400 transition-colors"
+          >
+            <span class="mr-1">💬</span>
+            WhatsApp
+          </a>
         </div>
         <div class="hidden md:flex items-center space-x-4">
           <span>🇧🇯 Cotonou, Bénin</span>
@@ -28,7 +36,9 @@
     <div class="container mx-auto px-4 py-4">
       <div class="flex justify-between items-center">
         <div class="flex items-center">
-          <h1 class="text-3xl font-bold text-yellow-400">CarCharoo</h1>
+          <NuxtLink to="/">
+            <h1 class="text-3xl font-bold text-yellow-400 cursor-pointer">CarCharoo</h1>
+          </NuxtLink>
           <span class="ml-2 text-sm bg-yellow-400 text-blue-900 px-2 py-1 rounded">Bénin</span>
         </div>
 
@@ -42,9 +52,11 @@
 
         <!-- Search and buttons -->
         <div class="flex items-center space-x-3">
-          <button class="bg-yellow-400 text-blue-900 px-4 py-2 rounded font-medium hover:bg-yellow-300 transition-colors">
-            Vendre mon véhicule
-          </button>
+          <NuxtLink to="/vendre">
+            <button class="bg-yellow-400 text-blue-900 px-4 py-2 rounded font-medium hover:bg-yellow-300 transition-colors">
+              Vendre mon véhicule
+            </button>
+          </NuxtLink>
         </div>
       </div>
     </div>

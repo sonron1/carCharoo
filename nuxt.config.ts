@@ -14,5 +14,12 @@ export default defineNuxtConfig({
                 { name: 'description', content: 'Trouvez votre véhicule idéal au Bénin avec CarCharoo' }
             ]
         }
+    },
+    vite: {
+        server: {
+            fs: {
+                allow: ['..']
+            }
+        }
     }
 })

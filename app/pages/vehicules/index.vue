@@ -28,7 +28,10 @@
           <!-- Résultats header -->
           <div class="flex justify-between items-center mb-6">
             <p class="text-gray-600">
-              {{ vehiclesCount }} véhicule{{ vehiclesCount > 1 ? 's' : '' }} trouvé{{ vehiclesCount > 1 ? 's' : '' }}
+              {{ pagination.total }} véhicule{{ pagination.total > 1 ? 's' : '' }} trouvé{{ pagination.total > 1 ? 's' : '' }}
+              <span v-if="pagination.total > 0" class="text-sm">
+                (Page {{ pagination.page }} sur {{ pagination.totalPages }})
+              </span>
             </p>
             <select
                 v-model="sortBy"
@@ -66,14 +69,59 @@
             </UiButton>
           </div>
 
-          <!-- Pagination (pour plus tard) -->
-          <div v-if="vehicles.length > 0" class="mt-8 flex justify-center">
-            <div class="flex space-x-2">
-              <button class="px-3 py-2 border border-gray-300 rounded hover:bg-gray-50">Précédent</button>
-              <button class="px-3 py-2 bg-blue-900 text-white rounded">1</button>
-              <button class="px-3 py-2 border border-gray-300 rounded hover:bg-gray-50">2</button>
-              <button class="px-3 py-2 border border-gray-300 rounded hover:bg-gray-50">3</button>
-              <button class="px-3 py-2 border border-gray-300 rounded hover:bg-gray-50">Suivant</button>
+          <!-- Pagination -->
+          <div v-if="vehicles.length > 0 && pagination.totalPages > 1" class="mt-8 flex justify-center">
+            <div class="flex items-center space-x-2">
+              <!-- Bouton Précédent -->
+              <button
+                  @click="changePage(pagination.page - 1)"
+                  :disabled="!pagination.hasPrev"
+                  :class="[
+                  'px-3 py-2 border rounded transition-colors',
+                  pagination.hasPrev
+                    ? 'border-gray-300 hover:bg-gray-50 text-gray-700'
+                    : 'border-gray-200 text-gray-400 cursor-not-allowed'
+                ]"
+              >
+                Précédent
+              </button>
+
+              <!-- Numéros de pages -->
+              <template v-for="page in visiblePages" :key="page">
+                <button
+                    v-if="page === '...'"
+                    class="px-3 py-2 text-gray-400"
+                    disabled
+                >
+                  ...
+                </button>
+                <button
+                    v-else
+                    @click="changePage(page)"
+                    :class="[
+                    'px-3 py-2 border rounded transition-colors',
+                    page === pagination.page
+                      ? 'bg-blue-900 text-white border-blue-900'
+                      : 'border-gray-300 hover:bg-gray-50 text-gray-700'
+                  ]"
+                >
+                  {{ page }}
+                </button>
+              </template>
+
+              <!-- Bouton Suivant -->
+              <button
+                  @click="changePage(pagination.page + 1)"
+                  :disabled="!pagination.hasNext"
+                  :class="[
+                  'px-3 py-2 border rounded transition-colors',
+                  pagination.hasNext
+                    ? 'border-gray-300 hover:bg-gray-50 text-gray-700'
+                    : 'border-gray-200 text-gray-400 cursor-not-allowed'
+                ]"
+              >
+                Suivant
+              </button>
             </div>
           </div>
         </div>
@@ -83,32 +131,68 @@
 </template>
 
 <script setup>
-const { vehicles, loading, fetchVehicles, searchVehicles } = useVehicles()
+const { vehicles, loading, pagination, fetchVehicles, searchVehicles } = useVehicles()
 const router = useRouter()
 
 const sortBy = ref('recent')
 const currentFilters = ref({})
 
-const vehiclesCount = computed(() => vehicles.value?.length || 0)
+// Pages visibles pour la pagination
+const visiblePages = computed(() => {
+  const total = pagination.value.totalPages
+  const current = pagination.value.page
+  const pages = []
+
+  if (total <= 7) {
+    // Afficher toutes les pages si <= 7
+    for (let i = 1; i <= total; i++) {
+      pages.push(i)
+    }
+  } else {
+    // Logique pour pagination avec ellipses
+    if (current <= 4) {
+      pages.push(1, 2, 3, 4, 5, '...', total)
+    } else if (current >= total - 3) {
+      pages.push(1, '...', total - 4, total - 3, total - 2, total - 1, total)
+    } else {
+      pages.push(1, '...', current - 1, current, current + 1, '...', total)
+    }
+  }
+
+  return pages
+})
 
 // Charger les véhicules au montage
 onMounted(async () => {
-  await fetchVehicles()
+  await fetchVehicles(1, 9)
 })
 
 const handleSearch = async (filters) => {
   currentFilters.value = filters
-  await searchVehicles(filters)
+  await searchVehicles(filters, 1, 9)
 }
 
 const handleFiltersChange = async (filters) => {
   currentFilters.value = { ...currentFilters.value, ...filters }
-  await searchVehicles(currentFilters.value)
+  await searchVehicles(currentFilters.value, 1, 9)
+}
+
+const changePage = async (page) => {
+  if (page < 1 || page > pagination.value.totalPages) return
+
+  if (Object.keys(currentFilters.value).length > 0) {
+    await searchVehicles(currentFilters.value, page, 9)
+  } else {
+    await fetchVehicles(page, 9)
+  }
+
+  // Scroll vers le haut
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
 const handleSort = () => {
-  // Implémentation du tri (à développer)
   console.log('Tri par:', sortBy.value)
+  // TODO: Implémenter le tri
 }
 
 const goToVehicle = (id) => {
@@ -117,7 +201,7 @@ const goToVehicle = (id) => {
 
 const clearAllFilters = async () => {
   currentFilters.value = {}
-  await fetchVehicles()
+  await fetchVehicles(1, 9)
 }
 
 // SEO

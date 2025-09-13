@@ -45,7 +45,7 @@
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div class="bg-white p-6 rounded-lg shadow-md">
-            <div class="text-3xl font-bold text-blue-900 mb-2">500+</div>
+            <div class="text-3xl font-bold text-blue-900 mb-2">28+</div>
             <div class="text-gray-600">Véhicules disponibles</div>
           </div>
           <div class="bg-white p-6 rounded-lg shadow-md">
@@ -122,7 +122,7 @@ const featuredVehicles = ref([
     id: 1,
     name: 'Toyota Camry 2020',
     price: '8 500 000',
-    image: '/images/toyota-camry.jpg',
+    image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=500&h=300&fit=crop',
     year: 2020,
     mileage: '45 000',
     fuel: 'Essence',
@@ -130,26 +130,26 @@ const featuredVehicles = ref([
     location: 'Cotonou'
   },
   {
-    id: 2,
-    name: 'Honda Accord 2019',
-    price: '7 200 000',
-    image: '/images/honda-accord.jpg',
-    year: 2019,
-    mileage: '52 000',
+    id: 7,
+    name: 'Honda Civic 2014',
+    price: '3 900 000',
+    image: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=500&h=300&fit=crop',
+    year: 2014,
+    mileage: '88 000',
     fuel: 'Essence',
     transmission: 'Automatique',
-    location: 'Porto-Novo'
+    location: 'Cotonou'
   },
   {
-    id: 3,
-    name: 'Nissan X-Trail 2021',
-    price: '12 800 000',
-    image: '/images/nissan-xtrail.jpg',
-    year: 2021,
-    mileage: '28 000',
+    id: 18,
+    name: 'BMW Serie 3 2015',
+    price: '8 500 000',
+    image: 'https://images.unsplash.com/photo-1542362567-b07e54358753?w=500&h=300&fit=crop',
+    year: 2015,
+    mileage: '75 000',
     fuel: 'Essence',
     transmission: 'Automatique',
-    location: 'Parakou'
+    location: 'Cotonou'
   }
 ])
 

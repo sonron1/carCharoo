@@ -1,4 +1,3 @@
-
 <template>
   <footer class="bg-gray-800 text-white py-12">
     <div class="container mx-auto px-4">
@@ -10,26 +9,27 @@
             <a href="#" class="text-yellow-400 hover:text-yellow-300">📘</a>
             <a href="#" class="text-yellow-400 hover:text-yellow-300">📷</a>
             <a href="#" class="text-yellow-400 hover:text-yellow-300">🐦</a>
+            <a href="https://wa.me/22967974298" target="_blank" class="text-yellow-400 hover:text-yellow-300">💬</a>
           </div>
         </div>
 
         <div>
           <h4 class="text-lg font-semibold mb-4">Véhicules</h4>
           <ul class="space-y-2 text-gray-300">
-            <li><a href="#" class="hover:text-yellow-400">Voitures neuves</a></li>
-            <li><a href="#" class="hover:text-yellow-400">Voitures d'occasion</a></li>
-            <li><a href="#" class="hover:text-yellow-400">Motos</a></li>
-            <li><a href="#" class="hover:text-yellow-400">Utilitaires</a></li>
+            <li><NuxtLink to="/vehicules" class="hover:text-yellow-400">Voitures neuves</NuxtLink></li>
+            <li><NuxtLink to="/vehicules" class="hover:text-yellow-400">Voitures d'occasion</NuxtLink></li>
+            <li><NuxtLink to="/vehicules" class="hover:text-yellow-400">Motos</NuxtLink></li>
+            <li><NuxtLink to="/vehicules" class="hover:text-yellow-400">Utilitaires</NuxtLink></li>
           </ul>
         </div>
 
         <div>
           <h4 class="text-lg font-semibold mb-4">Services</h4>
           <ul class="space-y-2 text-gray-300">
-            <li><a href="#" class="hover:text-yellow-400">Financement</a></li>
-            <li><a href="#" class="hover:text-yellow-400">Assurance</a></li>
-            <li><a href="#" class="hover:text-yellow-400">Maintenance</a></li>
-            <li><a href="#" class="hover:text-yellow-400">Garantie</a></li>
+            <li><NuxtLink to="/services" class="hover:text-yellow-400">Financement</NuxtLink></li>
+            <li><NuxtLink to="/services" class="hover:text-yellow-400">Assurance</NuxtLink></li>
+            <li><NuxtLink to="/services" class="hover:text-yellow-400">Maintenance</NuxtLink></li>
+            <li><NuxtLink to="/services" class="hover:text-yellow-400">Garantie</NuxtLink></li>
           </ul>
         </div>
 
@@ -37,9 +37,17 @@
           <h4 class="text-lg font-semibold mb-4">Contact</h4>
           <div class="space-y-2 text-gray-300">
             <p>📍 Cotonou, Bénin</p>
-            <p>📞 +229 XX XX XX XX</p>
+            <p>📞 +229 67 97 42 98</p>
             <p>✉️ contact@carcharoo.bj</p>
             <p>🕒 Lun-Sam: 8h-18h</p>
+            <a
+                href="https://wa.me/22967974298"
+                target="_blank"
+                class="flex items-center text-green-400 hover:text-green-300 transition-colors"
+            >
+              <span class="mr-2">💬</span>
+              Nous contacter sur WhatsApp
+            </a>
           </div>
         </div>
       </div>
