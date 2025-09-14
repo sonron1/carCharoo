@@ -22,11 +22,11 @@ export default defineNuxtConfig({
             fs: {
                 allow: [
                     // Autoriser l'accès au répertoire racine du projet
-                    resolve(__dirname, '..'),
+                    resolve('..'),
                     // Autoriser l'accès aux node_modules
-                    resolve(__dirname, '../node_modules'),
+                    resolve('../node_modules'),
                     // Autoriser l'accès au répertoire courant
-                    resolve(__dirname, '.')
+                    resolve('.')
                 ]
             }
         }
