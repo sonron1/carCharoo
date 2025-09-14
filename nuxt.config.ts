@@ -1,3 +1,5 @@
+import { resolve } from 'path'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     compatibilityDate: '2025-07-15',
@@ -18,7 +20,14 @@ export default defineNuxtConfig({
     vite: {
         server: {
             fs: {
-                allow: ['..']
+                allow: [
+                    // Autoriser l'accès au répertoire racine du projet
+                    resolve(__dirname, '..'),
+                    // Autoriser l'accès aux node_modules
+                    resolve(__dirname, '../node_modules'),
+                    // Autoriser l'accès au répertoire courant
+                    resolve(__dirname, '.')
+                ]
             }
         }
     }
