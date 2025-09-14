@@ -1,75 +1,30 @@
-# Nuxt Minimal Starter
+# 🚗 CarCharoo - Plateforme de Vente de Véhicules au Bénin
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+CarCharoo est une plateforme moderne de vente et d'achat de véhicules spécialement conçue pour le marché béninois. Développée avec Nuxt 3, Vue 3, et Tailwind CSS.
 
-## Setup
+## ✨ Fonctionnalités
 
-Make sure to install dependencies:
+- 🔍 **Recherche avancée** : Filtrage par marque, prix, type, localisation
+- 📱 **Design responsive** : Interface optimisée pour tous les appareils
+- 🎨 **Interface moderne** : Design aux couleurs du Bénin (bleu et jaune)
+- 🚀 **Performance optimisée** : Chargement rapide et expérience fluide
+- 💬 **Système de contact** : Formulaires intégrés pour contacter les vendeurs
+- 📊 **Gestion des véhicules** : CRUD complet pour les annonces
+- 🛡️ **Sécurité** : Validation des données et protection CSRF
 
+## 🛠️ Technologies Utilisées
+
+- **Framework** : Nuxt 3.x
+- **Frontend** : Vue 3.x avec Composition API
+- **Styling** : Tailwind CSS 3.x
+- **Language** : TypeScript/JavaScript
+- **Icônes** : Heroicons & Emojis
+- **Images** : Unsplash (placeholder)
+
+## 📦 Installation
+
+1. **Cloner le projet**
 ```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
+git clone <url-du-repo>
+cd carcharoo
 ```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
